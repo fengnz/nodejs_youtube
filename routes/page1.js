@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
   // res.send('<h1 style="color:blue; border: solid 1px">这里是网页1!</h1>');
-  res.render('page1');
+  res.render('page1', { title: 'Title 1' });
 });
 
 router.get('/1', (req, res) => {
