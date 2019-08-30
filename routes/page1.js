@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 
 router.get('/1', (req, res) => {
   // res.send('这里是网页1.1!');
-  res.render('page1_1');
+  res.render('page1_1', { title: 'page 1.1' });
 });
 
 router.get('/2', (req, res) => {
