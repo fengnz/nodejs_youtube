@@ -2,3 +2,29 @@ p {
     border: solid 1px;
     color: blue;
 }
+
+.rootPanel{
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+}
+
+.mainPanel{
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    background-color: yellow;
+}
+
+.sidebar {
+    display: flex;
+    width: 200px;
+    flex-direction: column;
+    background-color: purple;
+}
+
+.contentPanel {
+    display: flex;
+    flex-direction: column;
+    background-color: orange;
+}
