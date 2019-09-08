@@ -7,6 +7,7 @@ const exphbs  = require('express-handlebars');
 const app = express();
 
 app.set('views', path.join(__dirname, 'views'));
+app.use(express.static('public'));
 // app.set('view engine', 'pug');
 app.engine('hbs', exphbs({
     layoutsDir: 'views',
