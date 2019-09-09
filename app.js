@@ -15,7 +15,7 @@ app.engine('hbs', exphbs({
     extname: '.hbs'
   }));
 app.set('view engine', 'hbs');
-app.use('/', routes);
+app.use('/', routes1);
 app.use('/page1', routes1);
 
 module.exports = app;
