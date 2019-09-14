@@ -1,6 +1,10 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
 
+{{#if userInput.name}}
+你好: {{userInput.name}}
+{{/if}}
+
 <form action="/" method="post">
     <label for="name">姓名:</label>
     <input id="name" type="text" name="name" value="">
