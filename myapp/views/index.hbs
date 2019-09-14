@@ -1,31 +1,38 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
 
+
 {{#if userInput.name}}
-你好: {{userInput.name}}
+
+    {{#if userInput.name}}
+    你好: {{userInput.name}}
+    {{/if}}
+
+    {{#if userInput.gender}}
+    <br />
+    你的性别是: {{userInput.gender}}
+    {{/if}}
+
+{{else}}
+
+    <form action="/" method="post">
+        <ul>
+            <li>
+                <label for="name">姓名:</label>
+                <input id="name" type="text" name="name" value="">
+            </li>
+
+            <li>
+                <label for="gender">性别:</label>
+                男
+                <input id="gender" type="radio" name="gender" value="男">
+                女
+                <input id="gender" type="radio" name="gender" value="女">
+            </li>
+        </ul>
+
+
+        <input type="submit" value="提交">
+    </form>
+
 {{/if}}
-
-{{#if userInput.gender}}
-<br />
-你的性别是: {{userInput.gender}}
-{{/if}}
-
-<form action="/" method="post">
-    <ul>
-        <li>
-            <label for="name">姓名:</label>
-            <input id="name" type="text" name="name" value="">
-        </li>
-
-        <li>
-            <label for="gender">性别:</label>
-            男
-            <input id="gender" type="radio" name="gender" value="男">
-            女
-            <input id="gender" type="radio" name="gender" value="女">
-        </li>
-    </ul>
-
-
-    <input type="submit" value="提交">
-</form>
