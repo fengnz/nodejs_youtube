@@ -21,6 +21,15 @@
     你的性别是: {{userInput.gender}}
     {{/if}}
 
+    {{#if userInput.email}}
+    <br />
+    你的邮箱是: {{userInput.email}}
+    {{/if}}
+    {{#if userInput.phone}}
+    <br />
+    你的电话是: {{userInput.phone}}
+    {{/if}}
+
 {{else}}
 
     <form action="/" method="post">
@@ -28,6 +37,14 @@
             <li>
                 <label for="name">姓名:</label>
                 <input id="name" type="text" name="name" value="{{userInput.name}}">
+            </li>
+            <li>
+                <label for="email">邮箱:</label>
+                <input id="email" type="text" name="email" value="{{userInput.email}}">
+            </li>
+            <li>
+                <label for="phone">电话:</label>
+                <input id="phone" type="text" name="phone" value="{{userInput.phone}}">
             </li>
 
             <li>
