@@ -17,6 +17,11 @@ router.post('/',
     .withMessage('请输入性别')
     .equals('男')
     .withMessage('你只能指择男性'),
+  check('email')
+    .isLength({ min: 1 })
+    .withMessage('请输入你的邮箱')
+    .isEmail()
+    .withMessage('您输入的不是邮箱'),
 ],
 function(req, res, next) {
   const errors = validationResult(req);
