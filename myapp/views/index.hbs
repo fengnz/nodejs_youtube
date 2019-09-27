@@ -2,7 +2,15 @@
 <p>Welcome to {{title}}</p>
 
 
-{{#if userInput.name}}
+<ul style="color:red">
+    {{#each errors}}
+    <li>{{this.msg}}</li>
+    {{/each}}
+</ul>
+
+
+
+{{#if validInput}}
 
     {{#if userInput.name}}
     你好: {{userInput.name}}

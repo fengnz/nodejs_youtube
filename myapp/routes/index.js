@@ -13,6 +13,8 @@ router.post('/',
     .isLength({ min: 1 })
     .withMessage('请输入姓名'),
   check('gender')
+    .isLength({ min: 1 })
+    .withMessage('请输入性别')
     .equals('男')
     .withMessage('你只能指择男性'),
 ],
@@ -20,6 +22,6 @@ function(req, res, next) {
   const errors = validationResult(req);
   console.log(req.body);
   console.log(errors);
-  res.render('index', { title: 'Express', userInput: req.body });
+  res.render('index', { title: 'Express', userInput: req.body, errors: errors.array(), validInput: errors.isEmpty()});
 });
 module.exports = router;
