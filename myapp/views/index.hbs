@@ -46,11 +46,23 @@
             </li>
             <li>
                 <label for="email">邮箱:</label>
-                <input id="email" type="text" name="email" value="{{userInput.email}}">
+                <input id="email" class="form-control" type="email" name="email" value="{{userInput.email}}" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    请输入正确的邮箱
+                </div>
             </li>
             <li>
                 <label for="phone">电话:</label>
-                <input id="phone" type="text" name="phone" value="{{userInput.phone}}">
+                <input id="phone"  class="form-control" type="tel" name="phone" value="{{userInput.phone}}" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    请输入正确的电话!
+                </div>
             </li>
 
             <li>
