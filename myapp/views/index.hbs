@@ -32,11 +32,17 @@
 
 {{else}}
 
-    <form action="/" method="post" class="form-group">
-        <ul>
+    <form action="/" method="post" class="needs-validation"  novalidate>
+        <ul class="form-group">
             <li>
                 <label for="name">姓名:</label>
-                <input id="name" class="form-control"  type="text" name="name" value="{{userInput.name}}">
+                <input id="name" class="form-control" type="text" name="name" value="{{userInput.name}}" placeholder="请输入姓名" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a username.
+                </div>
             </li>
             <li>
                 <label for="email">邮箱:</label>
@@ -59,5 +65,26 @@
 
         <input class="btn btn-primary" type="submit" value="提交">
     </form>
+
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
 
 {{/if}}
