@@ -12,28 +12,7 @@ router.post('/',
 [
   check('name')
     .isLength({ min: 1 })
-    .withMessage('请输入姓名'),
-  check('gender')
-    .isLength({ min: 1 })
-    .withMessage('请输入性别')
-    .equals('男')
-    .withMessage('你只能指择男性'),
-  check('email')
-    .isLength({ min: 1 })
-    .withMessage('请输入你的邮箱')
-    .isEmail()
-    .withMessage('您输入的不是邮箱'),
-  check('phone')
-    .isLength({ min: 1 })
-    .withMessage('请输入你的电话')
-    .custom(value => {
-      console.log(value);
-      if (!/^\d{8}$/.test(value) || value.charAt(0) !== value.charAt(7)) {
-        throw new Error('电话号码必须是8位数, 而且第一位数和最后一位数要一样');
-      }
-      return true;
-    }),
-    sanitizeBody('phone').toInt()
+    .withMessage('请输入网址')
 ],
 function(req, res, next) {
   const errors = validationResult(req);

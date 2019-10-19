@@ -36,25 +36,17 @@
         <ul class="form-group">
             <li>
                 <label for="name">请输入网址:</label>
-                <textarea row="5" id="name" class="form-control" type="text" name="name" value="{{userInput.name}}" placeholder="请输入网址" required>
-                </textarea>
+                <textarea row="5" id="name" class="form-control" type="text" name="name" value="{{userInput.name}}" placeholder="请输入网址" required></textarea>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
                 <div class="invalid-feedback">
-                    Please choose a username.
+                    请输入网址
                 </div>
             </li>
             <li>
                 <label for="email">结果:</label>
-                <textarea row="5" id="email" class="form-control" type="text" name="email" value="{{userInput.email}}" readonly>
-                </textarea>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-                <div class="invalid-feedback">
-                    请输入正确的邮箱
-                </div>
+                <textarea row="5" id="email" class="form-control" type="text" name="email" value="{{userInput.email}}" readonly></textarea>
             </li>
         </ul>
 
