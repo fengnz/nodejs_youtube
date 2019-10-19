@@ -39,6 +39,6 @@ function(req, res, next) {
   const errors = validationResult(req);
   console.log(req.body);
   console.log(errors);
-  res.render('index', { title: 'Express', userInput: req.body, errors: errors.array(), validInput: errors.isEmpty()});
+  res.render('url-encoder', { title: 'Express', userInput: req.body, errors: errors.array(), validInput: errors.isEmpty()});
 });
 module.exports = router;
