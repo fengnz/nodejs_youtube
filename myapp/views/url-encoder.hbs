@@ -32,11 +32,11 @@
 
 {{else}}
 
-    <form action="/" method="post" class="needs-validation"  novalidate>
+    <form action="/url-encoder/" method="post" class="needs-validation"  novalidate>
         <ul class="form-group">
             <li>
-                <label for="name">姓名:</label>
-                <textarea row="5" id="name" class="form-control" type="text" name="name" value="{{userInput.name}}" placeholder="请输入姓名" required>
+                <label for="name">请输入网址:</label>
+                <textarea row="5" id="name" class="form-control" type="text" name="name" value="{{userInput.name}}" placeholder="请输入网址" required>
                 </textarea>
                 <div class="valid-feedback">
                     Looks good!
@@ -46,8 +46,8 @@
                 </div>
             </li>
             <li>
-                <label for="email">邮箱:</label>
-                <textarea row="5" id="email" class="form-control" type="text" name="email" value="{{userInput.email}}" required>
+                <label for="email">结果:</label>
+                <textarea row="5" id="email" class="form-control" type="text" name="email" value="{{userInput.email}}" readonly>
                 </textarea>
                 <div class="valid-feedback">
                     Looks good!
@@ -59,7 +59,7 @@
         </ul>
 
 
-        <input class="btn btn-primary" type="submit" value="提交">
+        <input class="btn btn-primary" type="submit" value="URL编码">
     </form>
 
     <script>
