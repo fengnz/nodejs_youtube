@@ -18,6 +18,12 @@ function(req, res, next) {
   const errors = validationResult(req);
   console.log(req.body);
   console.log(errors);
-  res.render('url-encoder', { title: 'Express', userInput: req.body, errors: errors.array(), validInput: errors.isEmpty()});
+
+
+  let userInput = req.body;
+  userInput.email = userInput.name;
+
+
+  res.render('url-encoder', { title: 'Express', userInput: userInput, errors: errors.array(), validInput: errors.isEmpty()});
 });
 module.exports = router;
