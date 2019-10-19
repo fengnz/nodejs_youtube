@@ -10,33 +10,12 @@
 
 
 
-{{#if validInput}}
-
-    {{#if userInput.name}}
-    你好: {{userInput.name}}
-    {{/if}}
-
-    {{#if userInput.gender}}
-    <br />
-    你的性别是: {{userInput.gender}}
-    {{/if}}
-
-    {{#if userInput.email}}
-    <br />
-    你的邮箱是: {{userInput.email}}
-    {{/if}}
-    {{#if userInput.phone}}
-    <br />
-    你的电话是: {{userInput.phone}}
-    {{/if}}
-
-{{else}}
 
     <form action="/url-encoder/" method="post" class="needs-validation"  novalidate>
         <ul class="form-group">
             <li>
                 <label for="name">请输入网址:</label>
-                <textarea row="5" id="name" class="form-control" type="text" name="name" value="{{userInput.name}}" placeholder="请输入网址" required></textarea>
+                <textarea row="5" id="name" class="form-control" type="text" name="name" placeholder="请输入网址" required> {{userInput.name}}</textarea>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
@@ -74,5 +53,3 @@
             }, false);
         })();
     </script>
-
-{{/if}}
