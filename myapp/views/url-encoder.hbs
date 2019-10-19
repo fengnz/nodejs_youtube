@@ -1,0 +1,102 @@
+<h1>{{title}}</h1>
+<p>Welcome to {{title}}</p>
+
+
+<ul style="color:red">
+    {{#each errors}}
+    <li>{{this.msg}}</li>
+    {{/each}}
+</ul>
+
+
+
+{{#if validInput}}
+
+    {{#if userInput.name}}
+    你好: {{userInput.name}}
+    {{/if}}
+
+    {{#if userInput.gender}}
+    <br />
+    你的性别是: {{userInput.gender}}
+    {{/if}}
+
+    {{#if userInput.email}}
+    <br />
+    你的邮箱是: {{userInput.email}}
+    {{/if}}
+    {{#if userInput.phone}}
+    <br />
+    你的电话是: {{userInput.phone}}
+    {{/if}}
+
+{{else}}
+
+    <form action="/" method="post" class="needs-validation"  novalidate>
+        <ul class="form-group">
+            <li>
+                <label for="name">姓名:</label>
+                <input id="name" class="form-control" type="text" name="name" value="{{userInput.name}}" placeholder="请输入姓名" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a username.
+                </div>
+            </li>
+            <li>
+                <label for="email">邮箱:</label>
+                <input id="email" class="form-control" type="email" name="email" value="{{userInput.email}}" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    请输入正确的邮箱
+                </div>
+            </li>
+            <li>
+                <label for="phone">电话:</label>
+                <input id="phone"  class="form-control" type="tel" name="phone" value="{{userInput.phone}}" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    请输入正确的电话!
+                </div>
+            </li>
+
+            <li>
+                <label for="gender">性别:</label>
+                男
+                <input id="gender" type="radio" name="gender" value="男">
+                女
+                <input id="gender" type="radio" name="gender" value="女">
+            </li>
+        </ul>
+
+
+        <input class="btn btn-primary" type="submit" value="提交">
+    </form>
+
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+
+{{/if}}
