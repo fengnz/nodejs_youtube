@@ -21,7 +21,7 @@ function(req, res, next) {
 
 
   let userInput = req.body;
-  userInput.email = userInput.name;
+  userInput.email = encodeURI(userInput.name);
 
 
   res.render('url-encoder', { title: 'Express', userInput: userInput, errors: errors.array(), validInput: errors.isEmpty()});
