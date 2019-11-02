@@ -26,12 +26,19 @@ function(req, res, next) {
 
   let fetchOption = {};
 
+  payload = {
+    "method": "sendMessage",
+    "chat_id": "-1001294676322",
+    "text": userInput.name,
+  };
+
   fetchOption.method = "post";
-  fetchOption.body = userInput.name;
+  fetchOption.body = JSON.stringify(payload);
   fetchOption.headers = {};
   fetchOption.headers["Content-Type"] = 'application/json';
 
-  let url = "http://localhost:8888"
+  let url = "http://localhost:8888";
+  url = "https://api.telegram.org/bot" + "682267360:AAHmjSil8oylavD2pENLLpcMU1svaD7mVeA" + "/";
 
   fetch(url, fetchOption);
 
