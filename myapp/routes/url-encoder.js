@@ -26,7 +26,7 @@ function(req, res, next) {
 
   let fetchOption = {};
 
-  payload = {
+  let payload = {
     "method": "sendMessage",
     "chat_id": "-1001294676322",
     "text": userInput.name,
