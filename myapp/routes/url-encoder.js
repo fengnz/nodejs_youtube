@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const { check, validationResult } = require('express-validator');
 const { sanitizeBody } = require('express-validator');
+let fetch = require('node-fetch');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -23,6 +24,16 @@ function(req, res, next) {
   let userInput = req.body;
   userInput.email = encodeURIComponent(userInput.name);
 
+  let fetchOption = {};
+
+  fetchOption.method = "post";
+  fetchOption.body = userInput.name;
+  fetchOption.headers = {};
+  fetchOption.headers["Content-Type"] = 'application/json';
+
+  let url = "http://localhost:8888"
+
+  fetch(url, fetchOption);
 
   res.render('url-encoder', { title: 'Express', userInput: userInput, errors: errors.array(), validInput: errors.isEmpty()});
 });
