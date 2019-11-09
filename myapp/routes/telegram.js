@@ -16,10 +16,14 @@ router.get('/bbf14ea8-4ede-4806-9a76-0da780cfdb2d', function(req, res, next) {
 router.post('/bbf14ea8-4ede-4806-9a76-0da780cfdb2d', function(req, res, next) {
   let fetchOption = {};
 
+  console.log(req.body);
+
+  let body = req.body;
+
   let payload = {
     "method": "sendMessage",
-    "chat_id": "-1001294676322",
-    "text": "机器人绑定成功",
+    "chat_id": body.message.chat.id + "",
+    "text": body.message.text,
   };
 
   fetchOption.method = "post";
