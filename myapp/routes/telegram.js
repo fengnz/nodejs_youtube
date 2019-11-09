@@ -13,8 +13,23 @@ router.get('/bbf14ea8-4ede-4806-9a76-0da780cfdb2d', function(req, res, next) {
   res.send('这个链接要保密, 请不要用HTTP访问这个链接, 更不要在网上任何地方发布这个链接');
 });
 
-router.post('/bbf14ea8-4ede-4806-9a76-0da780cfdb2d', function(req, res, next) {
+
+function postTelegram(payload) {
   let fetchOption = {};
+  fetchOption.method = "post";
+  fetchOption.body = JSON.stringify(payload);
+  fetchOption.headers = {};
+  fetchOption.headers["Content-Type"] = 'application/json';
+
+  let url = "http://localhost:8888";
+  url = "https://api.telegram.org/bot" + "682267360:AAHmjSil8oylavD2pENLLpcMU1svaD7mVeA" + "/";
+
+  return fetch(url, fetchOption).catch(e => {
+    console.log(e);
+  });
+}
+
+router.post('/bbf14ea8-4ede-4806-9a76-0da780cfdb2d', function(req, res, next) {
 
   console.log(req.body);
 
@@ -31,19 +46,15 @@ router.post('/bbf14ea8-4ede-4806-9a76-0da780cfdb2d', function(req, res, next) {
     "text": body.message.text,
   };
 
-  fetchOption.method = "post";
-  fetchOption.body = JSON.stringify(payload);
-  fetchOption.headers = {};
-  fetchOption.headers["Content-Type"] = 'application/json';
 
-  let url = "http://localhost:8888";
-  url = "https://api.telegram.org/bot" + "682267360:AAHmjSil8oylavD2pENLLpcMU1svaD7mVeA" + "/";
-
-  fetch(url, fetchOption).then(x => {
+  postTelegram(payload).then(x => {
     console.log(x);
     if (x.status && x.status == 200){
       res.send("Ok");
     }
+  }).catch(e => {
+    console.log(e);
+    res.status(500);
   });
 });
 
@@ -62,23 +73,13 @@ function(req, res, next) {
   let userInput = req.body;
   userInput.email = encodeURIComponent(userInput.name);
 
-  let fetchOption = {};
-
   let payload = {
     "method": "sendMessage",
     "chat_id": "-1001294676322",
     "text": userInput.name,
   };
 
-  fetchOption.method = "post";
-  fetchOption.body = JSON.stringify(payload);
-  fetchOption.headers = {};
-  fetchOption.headers["Content-Type"] = 'application/json';
-
-  let url = "http://localhost:8888";
-  url = "https://api.telegram.org/bot" + "682267360:AAHmjSil8oylavD2pENLLpcMU1svaD7mVeA" + "/";
-
-  fetch(url, fetchOption);
+  postTelegram(payload);
 
   res.render('telegram', { title: 'Express', userInput: userInput, errors: errors.array(), validInput: errors.isEmpty()});
 });
