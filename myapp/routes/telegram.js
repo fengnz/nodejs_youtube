@@ -20,6 +20,11 @@ router.post('/bbf14ea8-4ede-4806-9a76-0da780cfdb2d', function(req, res, next) {
 
   let body = req.body;
 
+  if (!body.message.text) {
+    res.send("Ok");
+    return;
+  }
+
   let payload = {
     "method": "sendMessage",
     "chat_id": body.message.chat.id + "",
