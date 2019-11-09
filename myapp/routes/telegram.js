@@ -13,6 +13,7 @@ router.get('/bbf14ea8-4ede-4806-9a76-0da780cfdb2d', function(req, res, next) {
   res.send('这个链接要保密, 请不要用HTTP访问这个链接, 更不要在网上任何地方发布这个链接');
 });
 
+const botToken = "682267360:AAHmjSil8oylavD2pENLLpcMU1svaD7mVeA";
 
 function postTelegram(payload) {
   let fetchOption = {};
@@ -22,7 +23,7 @@ function postTelegram(payload) {
   fetchOption.headers["Content-Type"] = 'application/json';
 
   let url = "http://localhost:8888";
-  url = "https://api.telegram.org/bot" + "682267360:AAHmjSil8oylavD2pENLLpcMU1svaD7mVeA" + "/";
+  url = "https://api.telegram.org/bot" + botToken + "/";
 
   return fetch(url, fetchOption).catch(e => {
     console.log(e);
@@ -73,10 +74,12 @@ function(req, res, next) {
   let userInput = req.body;
   userInput.email = encodeURIComponent(userInput.name);
 
+  const setWebhookUrl = "https://api.telegram.org/bot" + botToken + "/setWebhook?url=" + userInput.name;
+
   let payload = {
     "method": "sendMessage",
     "chat_id": "-1001294676322",
-    "text": userInput.name,
+    "text": setWebhookUrl,
   };
 
   postTelegram(payload);
