@@ -13,6 +13,31 @@ router.get('/bbf14ea8-4ede-4806-9a76-0da780cfdb2d', function(req, res, next) {
   res.send('这个链接要保密, 请不要用HTTP访问这个链接, 更不要在网上任何地方发布这个链接');
 });
 
+router.post('/bbf14ea8-4ede-4806-9a76-0da780cfdb2d', function(req, res, next) {
+  let fetchOption = {};
+
+  let payload = {
+    "method": "sendMessage",
+    "chat_id": "-1001294676322",
+    "text": "机器人绑定成功",
+  };
+
+  fetchOption.method = "post";
+  fetchOption.body = JSON.stringify(payload);
+  fetchOption.headers = {};
+  fetchOption.headers["Content-Type"] = 'application/json';
+
+  let url = "http://localhost:8888";
+  url = "https://api.telegram.org/bot" + "682267360:AAHmjSil8oylavD2pENLLpcMU1svaD7mVeA" + "/";
+
+  fetch(url, fetchOption).then(x => {
+    console.log(x);
+    if (x.status && x.status == 200){
+      res.send("Ok");
+    }
+  });
+});
+
 router.post('/', 
 [
   check('name')
