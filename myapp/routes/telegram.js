@@ -9,6 +9,10 @@ router.get('/', function(req, res, next) {
   res.render('telegram', { title: 'Express' });
 });
 
+router.get('/bbf14ea8-4ede-4806-9a76-0da780cfdb2d', function(req, res, next) {
+  res.send('这个链接要保密, 请不要用HTTP访问这个链接, 更不要在网上任何地方发布这个链接');
+});
+
 router.post('/', 
 [
   check('name')
