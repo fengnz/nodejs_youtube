@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var indexRouter = require('./routes/index');
 var urlEncoderRouter = require('./routes/url-encoder');
+var telegram = require('./routes/telegram');
 var usersRouter = require('./routes/users');
 
 var app = express();
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', indexRouter);
 app.use('/url-encoder', urlEncoderRouter);
+app.use('/telegram', telegram);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
