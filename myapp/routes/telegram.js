@@ -86,6 +86,11 @@ function(req, res, next) {
     if (response) {
       console.log(response.status);
       console.log("这段代码在200后面");
+
+      postTelegram(payload).then(response => {
+        console.log("发完一个又发一个");
+      });
+
       return response;
     }
   }).then(x => {
