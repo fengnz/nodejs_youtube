@@ -86,6 +86,7 @@ function(req, res, next) {
     if (response) {
       console.log(response.status);
       console.log("这段代码在200后面");
+      return response;
     }
   }).then(x => {
     console.log("这段代码在200后面, 而且只能放在then外面");
