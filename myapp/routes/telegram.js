@@ -67,8 +67,8 @@ router.post('/',
 ],
 function(req, res, next) {
   const errors = validationResult(req);
-  console.log(req.body);
-  console.log(errors);
+  // console.log(req.body);
+  // console.log(errors);
 
 
   let userInput = req.body;
@@ -82,7 +82,11 @@ function(req, res, next) {
     "text": setWebhookUrl,
   };
 
-  postTelegram(payload);
+  postTelegram(payload).then(response => {
+    if (response) {
+      console.log(response.status);
+    }
+  });
 
   res.render('telegram', { title: 'Express', userInput: userInput, errors: errors.array(), validInput: errors.isEmpty()});
 });
