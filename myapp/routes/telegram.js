@@ -82,18 +82,17 @@ function(req, res, next) {
     "text": setWebhookUrl,
   };
 
-  let task = postTelegram(payload).then(response => {
+  postTelegram(payload).then(response => {
     if (response) {
       console.log(response.status);
       console.log("这段代码在200后面");
     }
+  }).then(x => {
+    console.log("这段代码在200后面, 而且只能放在then外面");
+    console.log(x);
   });
 
   console.log('做点别的什么事, 不需要在200后面');
-
-  task.then(x => {
-    console.log("这段代码在200后面, 而且只能放在then外面");
-  })
 
   res.render('telegram', { title: 'Express', userInput: userInput, errors: errors.array(), validInput: errors.isEmpty()});
 });
