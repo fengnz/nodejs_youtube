@@ -93,11 +93,12 @@ function(req, res, next) {
     try {
       console.log(x.bbb.ccc);
     } catch (e) {
-      return Promise.reject(e);
+      return Promise.reject(x);
     }
     return x;
   }).catch(e => {
     console.log("发现如下错误====>" + e);
+    console.log(e);
   });
 
   console.log('做点别的什么事, 不需要在200后面');
