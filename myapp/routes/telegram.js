@@ -65,7 +65,7 @@ router.post('/',
     .isLength({ min: 1 })
     .withMessage('请输入网址')
 ],
-async function(req, res, next) {
+function(req, res, next) {
   const errors = validationResult(req);
   // console.log(req.body);
   // console.log(errors);
@@ -82,14 +82,18 @@ async function(req, res, next) {
     "text": setWebhookUrl,
   };
 
-  await postTelegram(payload).then(response => {
+  let task = postTelegram(payload).then(response => {
     if (response) {
       console.log(response.status);
       console.log("这段代码在200后面");
     }
   });
 
-  console.log("这段代码在200后面, 而且只能放在then外面");
+  console.log('做点别的什么事, 不需要在200后面');
+
+  task.then(x => {
+    console.log("这段代码在200后面, 而且只能放在then外面");
+  })
 
   res.render('telegram', { title: 'Express', userInput: userInput, errors: errors.array(), validInput: errors.isEmpty()});
 });
