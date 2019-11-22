@@ -87,9 +87,6 @@ function(req, res, next) {
       console.log(response.status);
       console.log("这段代码在200后面");
 
-      postTelegram(payload).then(response => {
-        console.log("发完一个又发一个");
-      });
 
       return response;
     }
@@ -103,6 +100,10 @@ function(req, res, next) {
   }).catch(e => {
     console.log("发现如下错误====>" + e);
     console.log(e);
+  });
+
+  postTelegram(payload).then(response => {
+    console.log("发完一个又发一个");
   });
 
   console.log('做点别的什么事, 不需要在200后面');
