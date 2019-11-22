@@ -90,7 +90,11 @@ function(req, res, next) {
     }
   }).then(x => {
     console.log("这段代码在200后面, 而且只能放在then外面");
-    console.log(x.bbb.ccc);
+    try {
+      console.log(x.bbb.ccc);
+    } catch (e) {
+      return Promise.reject(e);
+    }
     return x;
   }).catch(e => {
     console.log("发现如下错误====>" + e);
