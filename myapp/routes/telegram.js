@@ -88,6 +88,8 @@ function(req, res, next) {
     }
   });
 
+  console.log("这段代码在200后面");
+
   res.render('telegram', { title: 'Express', userInput: userInput, errors: errors.array(), validInput: errors.isEmpty()});
 });
 module.exports = router;
