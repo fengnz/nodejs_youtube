@@ -82,7 +82,8 @@ function(req, res, next) {
     "text": setWebhookUrl,
   };
 
-  postTelegram(payload).then(response => {
+  const tasks = [];
+  const task1 = postTelegram(payload).then(response => {
     if (response) {
       console.log(response.status);
       console.log("这段代码在200后面");
@@ -102,11 +103,20 @@ function(req, res, next) {
     console.log(e);
   });
 
-  postTelegram(payload).then(response => {
+  const task2 = postTelegram(payload).then(response => {
     console.log("发完一个又发一个");
   });
 
+
+  tasks.push(task1);
+  tasks.push(task2);
+
   console.log('做点别的什么事, 不需要在200后面');
+
+
+  Promise.all(tasks).then(x => {
+    console.log('等所有异步任务完成了才执行这段代码');
+  });
 
   res.render('telegram', { title: 'Express', userInput: userInput, errors: errors.array(), validInput: errors.isEmpty()});
 });
