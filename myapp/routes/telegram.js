@@ -93,7 +93,10 @@ function(req, res, next) {
     try {
       console.log(x.bbb.ccc);
     } catch (e) {
-      return Promise.reject(x);
+      return Promise.reject({
+        response: x,
+        error: e,
+      });
     }
     return x;
   }).catch(e => {
