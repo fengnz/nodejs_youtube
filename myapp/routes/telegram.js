@@ -90,10 +90,8 @@ function(req, res, next) {
     }
   }).then(x => {
     console.log("这段代码在200后面, 而且只能放在then外面");
-    try {
-      console.log(x.bbb.ccc);
-    } catch (e) {}
-  });
+    console.log(x.bbb.ccc);
+  }).catch(e => {});
 
   console.log('做点别的什么事, 不需要在200后面');
 
