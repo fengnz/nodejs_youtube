@@ -18,5 +18,17 @@
     "morgan": "~1.9.1",
     "node-fetch": "^2.6.0",
     "nodemon": "^1.19.2"
+  },
+  "deploy-node-app": {
+    "prod": {
+      "context": "kubesail-fengnz",
+      "registry": "index.docker.io/v1/",
+      "type": "server",
+      "port": 3000,
+      "protocol": "http",
+      "entrypoint": "bin\\www",
+      "registryUsername": "fennng",
+      "isPublic": false
+    }
   }
 }

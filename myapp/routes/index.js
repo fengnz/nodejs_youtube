@@ -5,7 +5,7 @@ const { sanitizeBody } = require('express-validator');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Express' + " - "+ process.env.GET_HOSTS_FROM});
 });
 
 router.post('/', 
